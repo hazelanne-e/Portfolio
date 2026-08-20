@@ -1,0 +1,166 @@
+#skills {
+    width: 100%;
+    margin: 0 auto;
+    padding: 3rem 0 5rem;
+}
+
+.marquee {
+    overflow: hidden;
+    border-block: 1px solid var(--border);
+    padding: 0.9rem 0;
+    margin-bottom: 4.5rem;
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee:hover .marqueeTrack {
+    animation-play-state: paused;
+}
+
+.marqueeTrack {
+    display: flex;
+    width: max-content;
+    gap: 1.5rem;
+    animation: marquee 22s linear infinite;
+}
+
+.marqueeTrack span {
+    font-family: var(--display);
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--text);
+}
+
+.marqueeTrack b {
+    color: var(--yellow);
+    font-weight: 700;
+    margin: 0 0.4rem;
+}
+
+.aboutHead,
+.bento {
+    width: min(100%, var(--max-width));
+    margin: 0 auto;
+    padding: 0 6vw;
+}
+
+.skillTitle {
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    margin-bottom: 2rem;
+}
+
+.skillTitle span {
+    color: transparent;
+    -webkit-text-stroke: 1.4px var(--yellow);
+}
+
+.bento {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.bento .reveal,
+.skillIndiv {
+    height: 100%;
+}
+
+.bentoCopy {
+    grid-column: span 2;
+    grid-row: span 2;
+    padding: 1.8rem;
+    border-radius: 1.6rem;
+    border: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+}
+
+.skillText {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+.skillText strong {
+    color: var(--yellow);
+}
+
+.statRow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin-top: 1.8rem;
+}
+
+.statRow strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 1.5rem;
+    color: var(--yellow);
+}
+
+.statRow span {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.skillIndiv {
+    min-height: 100%;
+    padding: 1.35rem 1.25rem;
+    border-radius: 1.4rem;
+    border: 1px solid var(--border);
+    background: var(--bg-card);
+    text-align: left;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.skillIndiv:hover {
+    transform: translateY(-6px);
+    border-color: rgba(214, 255, 63, 0.35);
+    background: rgba(214, 255, 63, 0.05);
+}
+
+.skillImg {
+    object-fit: contain;
+    height: 2.8rem;
+    width: 2.8rem;
+    margin-bottom: 0.9rem;
+}
+
+.skillIndiv h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.4rem;
+}
+
+.skillIndiv p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+@media screen and (max-width: 860px) {
+    .aboutHead,
+    .bento {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .bento,
+    .statRow {
+        grid-template-columns: 1fr;
+    }
+
+    .bentoCopy {
+        grid-column: auto;
+        grid-row: auto;
+    }
+}

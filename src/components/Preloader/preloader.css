@@ -1,0 +1,56 @@
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: #050505;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.1rem;
+    transition: transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.preloader.is-leaving {
+    transform: translateY(-110%);
+}
+
+.preloaderBrand {
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.preloaderName {
+    font-family: var(--display);
+    font-size: clamp(2.4rem, 8vw, 5.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+}
+
+.preloaderName span {
+    color: var(--yellow);
+}
+
+.preloaderBar {
+    width: min(18rem, 70vw);
+    height: 2px;
+    background: rgba(255, 255, 255, 0.12);
+    overflow: hidden;
+}
+
+.preloaderBar span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--yellow), var(--purple));
+    transition: width 0.08s linear;
+}
+
+.preloaderCount {
+    font-family: var(--display);
+    font-size: 0.9rem;
+    color: var(--yellow);
+    letter-spacing: 0.18em;
+}

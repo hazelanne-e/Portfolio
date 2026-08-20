@@ -1,0 +1,205 @@
+.navbar {
+    position: fixed;
+    top: 1.1rem;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar.is-hidden {
+    transform: translateY(-140%);
+}
+
+.navInner {
+    width: min(100%, 72rem);
+    height: 4.2rem;
+    padding: 0 0.7rem 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: rgba(8, 8, 8, 0.55);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar.scrolled .navInner {
+    background: rgba(8, 8, 8, 0.82);
+    border-color: rgba(214, 255, 63, 0.18);
+}
+
+.logoLink {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--text);
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+    font-size: 0.82rem;
+}
+
+.logo {
+    object-fit: cover;
+    height: 2.4rem;
+    width: 2.4rem;
+    border-radius: 50%;
+}
+
+.Menu {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+}
+
+.MenuListItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.8rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    border-radius: 999px;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.navIndex {
+    font-size: 0.62rem;
+    color: var(--yellow);
+    letter-spacing: 0.08em;
+}
+
+.MenuListItem:hover,
+.MenuListItem.active {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.navCta {
+    background: var(--yellow);
+    color: #111;
+    font-weight: 700;
+    font-size: 0.82rem;
+    padding: 0.62rem 1.15rem;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.mobMenu {
+    display: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: none;
+    background: transparent;
+    position: relative;
+    z-index: 60;
+}
+
+.mobMenu span {
+    display: block;
+    width: 1.4rem;
+    height: 2px;
+    background: var(--text);
+    margin: 5px auto;
+    border-radius: 999px;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.mobMenu.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.mobMenu.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobMenu.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+.navMenu {
+    display: none;
+}
+
+@media screen and (max-width: 860px) {
+    .navbar {
+        top: 0.75rem;
+    }
+
+    .Menu,
+    .navInner .magnetic {
+        display: none;
+    }
+
+    .logoLink span {
+        display: none;
+    }
+
+    .mobMenu {
+        display: block;
+    }
+
+    .navMenu {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 5rem 1.5rem 2rem;
+        background: rgba(5, 5, 5, 0.96);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-12px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        z-index: 45;
+    }
+
+    .navMenu.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: none;
+    }
+
+    .ListItem {
+        font-family: var(--display);
+        font-size: clamp(2.2rem, 10vw, 3.6rem);
+        font-weight: 800;
+        color: var(--text);
+        padding: 0.35rem 0;
+        display: flex;
+        align-items: baseline;
+        gap: 0.8rem;
+        cursor: pointer;
+    }
+
+    .ListItem .navIndex {
+        font-size: 0.9rem;
+    }
+
+    .ListItem.active,
+    .ListItem:hover {
+        color: var(--yellow);
+    }
+
+    .mobileCta {
+        margin-top: 1.5rem;
+        width: fit-content;
+        background: var(--yellow);
+        color: #111;
+        font-weight: 700;
+        padding: 0.85rem 1.4rem;
+        border-radius: 999px;
+        cursor: pointer;
+    }
+}
