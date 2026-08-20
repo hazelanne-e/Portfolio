@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Portfolio/static/css/main.d90eb5d8.css",
+    "main.js": "/Portfolio/static/js/main.5ecc7721.js",
+    "static/media/proj1.png": "/Portfolio/static/media/proj1.72333b56694eacb8367b.png",
+    "static/media/proj3.png": "/Portfolio/static/media/proj3.cd791db844275e3c9591.png",
+    "static/media/proj6.png": "/Portfolio/static/media/proj6.34647fe2974d5fdfc3a7.png",
+    "static/media/proj4.png": "/Portfolio/static/media/proj4.19c93ad265ba7aec2331.png",
+    "static/media/proj5.png": "/Portfolio/static/media/proj5.2a2039b53efff513f757.png",
+    "static/media/proj2.png": "/Portfolio/static/media/proj2.79a96965b574a7b5edb2.png",
+    "static/media/mysql.png": "/Portfolio/static/media/mysql.c2c96312fcaa5f64c518.png",
+    "static/media/image2.png": "/Portfolio/static/media/image2.237b16cff0ad31617f7c.png",
+    "static/media/js.png": "/Portfolio/static/media/js.a9622d6f3790d4c1c3b7.png",
+    "static/media/laravel.png": "/Portfolio/static/media/laravel.c2c125241f162d216fa2.png",
+    "static/media/CI.png": "/Portfolio/static/media/CI.5d529d9106aac38dac2b.png",
+    "static/media/ai.png": "/Portfolio/static/media/ai.a007d3dfd27243b6aea6.png",
+    "index.html": "/Portfolio/index.html",
+    "main.d90eb5d8.css.map": "/Portfolio/static/css/main.d90eb5d8.css.map",
+    "main.5ecc7721.js.map": "/Portfolio/static/js/main.5ecc7721.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d90eb5d8.css",
+    "static/js/main.5ecc7721.js"
+  ]
+}
