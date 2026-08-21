@@ -16,6 +16,7 @@ class Contact extends Component {
             message: '',
             status: '',
             error: '',
+            sending: false,
         };
     }
 
@@ -27,31 +28,68 @@ class Contact extends Component {
         });
     };
 
-    handleSubmit = (event) => {
+    handleSubmit = async (event) => {
         event.preventDefault();
-        const { name, email, message } = this.state;
+        const { name, email, message, sending } = this.state;
+
+        if (sending) return;
 
         if (!name.trim() || !email.trim() || !message.trim()) {
             this.setState({ error: 'Please fill in your name, email, and message.' });
             return;
         }
 
-        const subject = encodeURIComponent(`Portfolio message from ${name}`);
-        const body = encodeURIComponent(
-            `Name: ${name}\nEmail: ${email}\n\n${message}`
-        );
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email.trim())) {
+            this.setState({ error: 'Please enter a valid email address.' });
+            return;
+        }
 
-        window.location.href = `mailto:hazelannecandelaria91@gmail.com?subject=${subject}&body=${body}`;
-        this.setState({
-            status: 'Your email app should open with the message ready to send.',
-            name: '',
-            email: '',
-            message: '',
-        });
+        this.setState({ sending: true, error: '', status: '' });
+
+        try {
+            const response = await fetch(
+                'https://formsubmit.co/ajax/hazelannecandelaria91@gmail.com',
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Accept: 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: name.trim(),
+                        email: email.trim(),
+                        message: message.trim(),
+                        _subject: `Portfolio message from ${name.trim()}`,
+                        _replyto: email.trim(),
+                        _template: 'table',
+                    }),
+                }
+            );
+
+            const result = await response.json();
+
+            if (!response.ok || result.success === 'false') {
+                throw new Error(result.message || 'Unable to send message.');
+            }
+
+            this.setState({
+                status: 'Message sent. I’ll get back to you by email.',
+                name: '',
+                email: '',
+                message: '',
+                sending: false,
+            });
+        } catch {
+            this.setState({
+                sending: false,
+                error: 'Message could not be sent. Please try again or email me directly.',
+            });
+        }
     };
 
     render() {
-        const { name, email, message, status, error } = this.state;
+        const { name, email, message, status, error, sending } = this.state;
 
         return (
             <section className="contactPage">
@@ -68,6 +106,7 @@ class Contact extends Component {
                     </Reveal>
 
                     <form className="contactForm" onSubmit={this.handleSubmit} noValidate>
+                        <input type="text" name="_honey" className="srOnly" tabIndex="-1" autoComplete="off" />
                         <label className="srOnly" htmlFor="name">Name</label>
                         <input
                             id="name"
@@ -103,8 +142,8 @@ class Contact extends Component {
                         {error && <p className="formAlert error">{error}</p>}
                         {status && <p className="formAlert success">{status}</p>}
                         <Magnetic>
-                            <button type="submit" className="submitBtn">
-                                Send message
+                            <button type="submit" className="submitBtn" disabled={sending}>
+                                {sending ? 'Sending...' : 'Send Message'}
                             </button>
                         </Magnetic>
                     </form>

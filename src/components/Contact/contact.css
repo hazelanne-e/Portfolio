@@ -84,6 +84,11 @@
     font-size: 0.95rem;
 }
 
+.submitBtn:disabled {
+    opacity: 0.65;
+    cursor: wait;
+}
+
 .formAlert {
     width: 100%;
     font-size: 0.88rem;
