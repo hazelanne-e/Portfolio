@@ -15,11 +15,10 @@ Open http://localhost:3000
 
 ## Publish on GitHub Pages
 
-This is a React app, so GitHub must serve the **built** files, not the source folder.
+GitHub Pages is serving the **built** site from this branch (`index.html` at the repo root). After you change the React source, rebuild and copy the output before pushing:
 
-1. Push your code to `branch-one`.
-2. On GitHub, open **Settings → Pages**.
-3. Set **Source** to **GitHub Actions**.
-4. Run the **Deploy to GitHub Pages** workflow (it also runs on every push to `branch-one`).
+```bash
+npm run build
+```
 
-If Pages is set to `branch-one` instead, GitHub will show this README instead of the portfolio.
+Then copy the files from `build/` into the repo root (`index.html`, `static/`, `style.css`, `logo.jpg`, `.nojekyll`) and push to `branch-one`.
