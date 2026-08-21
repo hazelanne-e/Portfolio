@@ -6,7 +6,7 @@ import Magnetic from '../Magnetic/magnetic';
 
 const roles = [
   'Web Developer',
-  'Project Manager',
+  'Front-End Developer',
   'Project Manager',
 ];
 
@@ -44,18 +44,21 @@ const Intro = () => {
         </div>
         <p className="hello">Hello, I am</p>
         <h1 className="introText">
-          Hazel
-          <span className="introName"> Anne.</span>
+          <span className="introLine">
+            <span className="introName">HAZEL ANNE</span>
+          </span>
         </h1>
         <p className="introRole">
           <span>{text}</span>
           <span className="caret">|</span>
         </p>
         <p className="introPara">
-          4th year BSIT student majoring in <strong>Systems Development</strong>.
-          I craft organized, user-centered web experiences and grow as a{' '}
-          <strong>front-end developer</strong> who turns ideas into polished
-          digital products.
+          I graduated with a <strong>BSIT</strong> major in{' '}
+          <strong>Systems Development</strong>. I have developed several web
+          applications and contributed to my university through those systems.
+          I am open to freelance and contract projects, and I excel in{' '}
+          <strong>Project Management</strong> — knowledgeable in Agile
+          Methodologies and <strong>Front-End Development</strong>.
         </p>
         <div className="introActions">
           <Magnetic>
@@ -86,11 +89,11 @@ const Intro = () => {
             </defs>
             <text>
               <textPath href="#circlePath" xlinkHref="#circlePath">
-                WEB DEVELOPER • HAZEL ANNE • PROJECT MANAGER •
+                PROJECT MANAGER • HAZEL ANNE • WEB DEVELOPER •
               </textPath>
             </text>
           </svg>
-          <img src={bg} alt="Hazel Anne" className="bg" />
+          <img src={bg} alt="Hazel Anne Candelaria" className="bg" />
         </div>
         <div className="scrollHint">
           <span />

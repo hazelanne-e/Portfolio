@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './contact.css';
 import fbIcon from '../../assets/facebook.png';
-import igIcon from '../../assets/insta.png';
 import emailIcon from '../../assets/email.png';
 import linkIcon from '../../assets/linkedin.png';
 import Magnetic from '../Magnetic/magnetic';
@@ -49,7 +48,7 @@ class Contact extends Component {
 
         try {
             const response = await fetch(
-                'https://formsubmit.co/ajax/hazelannecandelaria91@gmail.com',
+                'https://formsubmit.co/ajax/216912552363330b82c56370d7238596',
                 {
                     method: 'POST',
                     headers: {
@@ -57,20 +56,33 @@ class Contact extends Component {
                         Accept: 'application/json',
                     },
                     body: JSON.stringify({
-                        name: name.trim(),
-                        email: email.trim(),
-                        message: message.trim(),
-                        _subject: `Portfolio message from ${name.trim()}`,
+                        Name: name.trim(),
+                        Email: email.trim(),
+                        Message: message.trim(),
+                        _subject: `Portfolio Message from ${name.trim()}`,
                         _replyto: email.trim(),
                         _template: 'table',
+                        _captcha: 'false',
                     }),
                 }
             );
 
-            const result = await response.json();
+            const text = await response.text();
+            let result = {};
+            try {
+                result = JSON.parse(text);
+            } catch {
+                throw new Error('Unable to send message.');
+            }
 
-            if (!response.ok || result.success === 'false') {
-                throw new Error(result.message || 'Unable to send message.');
+            if (!response.ok || result.success === 'false' || result.success === false) {
+                const raw = result.message || 'Unable to send message.';
+                if (/activation/i.test(raw)) {
+                    throw new Error(
+                        'Check Gmail for an email from FormSubmit and click Activate Form. Then send your message again.'
+                    );
+                }
+                throw new Error(raw);
             }
 
             this.setState({
@@ -80,10 +92,12 @@ class Contact extends Component {
                 message: '',
                 sending: false,
             });
-        } catch {
+        } catch (err) {
             this.setState({
                 sending: false,
-                error: 'Message could not be sent. Please try again or email me directly.',
+                error: err instanceof Error && err.message
+                    ? err.message
+                    : 'Message could not be sent. Please try again in a moment.',
             });
         }
     };
@@ -98,10 +112,10 @@ class Contact extends Component {
                         <p className="sectionEyebrow">Contact / 04</p>
                         <h2 className="contactTitle">
                             Let’s make
-                            <span> something unforgettable.</span>
+                            <span> Something Unforgettable.</span>
                         </h2>
                         <p className="contactText">
-                            Got a project, internship, or idea? Drop a message and I’ll get back to you.
+                            Got a project, internship, or idea? Fill this in and tap Send Message — it goes straight to my inbox, no new tab.
                         </p>
                     </Reveal>
 
@@ -149,7 +163,12 @@ class Contact extends Component {
                     </form>
 
                     <div className="links">
-                        <a href="mailto:hazelannecandelaria91@gmail.com" aria-label="Email">
+                        <a
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=hazelannecandelaria91@gmail.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Email Address"
+                        >
                             <img src={emailIcon} alt="" className="link" />
                         </a>
                         <a
@@ -167,14 +186,6 @@ class Contact extends Component {
                             aria-label="LinkedIn"
                         >
                             <img src={linkIcon} alt="" className="link" />
-                        </a>
-                        <a
-                            href="https://www.instagram.com/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Instagram"
-                        >
-                            <img src={igIcon} alt="" className="link" />
                         </a>
                     </div>
                 </div>

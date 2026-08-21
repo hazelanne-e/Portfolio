@@ -8,29 +8,33 @@
     display: block;
     text-align: center;
     font-family: var(--display);
-    font-size: clamp(3.4rem, 14vw, 10rem);
+    font-style: normal;
+    font-size: clamp(1.6rem, 6.5vw, 4.6rem);
     font-weight: 800;
-    letter-spacing: -0.07em;
-    line-height: 0.85;
-    color: transparent;
-    -webkit-text-stroke: 1.5px rgba(214, 255, 63, 0.55);
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+    color: #fff;
+    text-shadow:
+        6px 8px 0 #c6e800,
+        0 0 36px rgba(214, 255, 63, 0.4);
     cursor: pointer;
-    transition: color 0.35s ease, -webkit-text-stroke-color 0.35s ease;
+    transition: color 0.35s ease, text-shadow 0.35s ease;
 }
 
 .footerMark:hover {
     color: var(--yellow);
-    -webkit-text-stroke-color: var(--yellow);
+    text-shadow:
+        8px 10px 0 #9bb800,
+        0 0 40px rgba(214, 255, 63, 0.55);
 }
 
 .footerRow {
     display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
+    justify-content: center;
     margin-top: 2rem;
     font-size: 0.85rem;
     color: var(--text-muted);
+    text-align: center;
 }
 
 .footerLink {

@@ -40,26 +40,59 @@
 }
 
 .hello {
-    font-size: 1rem;
+    font-size: 0.82rem;
     font-weight: 400;
     color: var(--text-muted);
-    letter-spacing: 0.16em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
 }
 
 .introText {
-    font-size: clamp(3.4rem, 8vw, 7.2rem);
+    display: flex;
+    flex-direction: column;
+    font-family: var(--display);
+    font-size: clamp(2.8rem, 8vw, 6.4rem);
     font-weight: 800;
+    font-style: normal;
     line-height: 0.88;
     letter-spacing: -0.05em;
     margin: 0.35rem 0 0.8rem;
+    padding-right: 0.6rem;
+    color: #fff;
+}
+
+.introLine {
+    display: block;
+    overflow: hidden;
 }
 
 .introName {
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--yellow);
-    text-stroke: 1.5px var(--yellow);
+    display: block;
+    transform: translateY(110%);
 }
+
+.site:not(.is-booting) .introName {
+    animation: nameRise 1.15s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+    text-shadow:
+        6px 8px 0 var(--purple-deep),
+        0 0 36px rgba(168, 85, 247, 0.4);
+}
+
+.site:not(.is-booting) .availability,
+.site:not(.is-booting) .hello,
+.site:not(.is-booting) .introRole,
+.site:not(.is-booting) .introPara,
+.site:not(.is-booting) .introActions,
+.site:not(.is-booting) .introPhoto {
+    animation: fadeRise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.site:not(.is-booting) .hello { animation-delay: 0.2s; }
+.site:not(.is-booting) .availability { animation-delay: 0.05s; }
+.site:not(.is-booting) .introRole { animation-delay: 0.45s; }
+.site:not(.is-booting) .introPara { animation-delay: 0.55s; }
+.site:not(.is-booting) .introActions { animation-delay: 0.65s; }
+.site:not(.is-booting) .introPhoto { animation-delay: 0.25s; }
 
 .introRole {
     color: var(--purple);
@@ -98,6 +131,9 @@
 }
 
 .btn {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     background: var(--yellow);
     color: #111;
     padding: 0.95rem 1.5rem;
@@ -108,11 +144,21 @@
     justify-content: center;
     font-size: 0.92rem;
     font-weight: 700;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition: color 0.35s ease, border-color 0.35s ease;
 }
 
-.btn:hover {
-    background: var(--yellow-hover);
+.btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    transform: translateY(101%);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+}
+
+.btn:hover::before {
+    transform: translateY(0);
 }
 
 .btnGhost {
@@ -121,8 +167,13 @@
     border-color: var(--border);
 }
 
+.btnGhost::before {
+    background: var(--yellow);
+}
+
 .btnGhost:hover {
-    background: rgba(255, 255, 255, 0.05);
+    color: #111;
+    border-color: var(--yellow);
 }
 
 .introPhoto {
@@ -160,7 +211,10 @@
     object-fit: cover;
     border-radius: 50%;
     border: 1px solid rgba(214, 255, 63, 0.25);
-    box-shadow: 0 0 0 18px rgba(255, 60, 172, 0.08), 0 30px 80px rgba(0, 0, 0, 0.45);
+    box-shadow:
+        0 0 0 18px rgba(124, 58, 237, 0.12),
+        0 30px 80px rgba(0, 0, 0, 0.45);
+    animation: photoFloat 6s ease-in-out infinite;
 }
 
 .scrollHint {
@@ -211,6 +265,20 @@
 @keyframes wheel {
     0% { opacity: 1; transform: translateX(-50%) translateY(0); }
     100% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+}
+
+@keyframes nameRise {
+    to { transform: translateY(0); }
+}
+
+@keyframes fadeRise {
+    from { opacity: 0; transform: translateY(22px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes photoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 @media screen and (max-width: 860px) {

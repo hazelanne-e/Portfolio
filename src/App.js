@@ -37,6 +37,7 @@ function App() {
         <span className="orb two" />
         <span className="orb three" />
       </div>
+      <div className="pageGrid" aria-hidden="true" />
       <div className="noise" aria-hidden="true" />
       <div className="scrollProgress" aria-hidden="true">
         <span style={{ transform: `scaleX(${progress})` }} />

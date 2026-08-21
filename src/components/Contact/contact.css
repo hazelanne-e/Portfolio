@@ -14,6 +14,9 @@
 }
 
 .contactTitle span {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
     color: transparent;
     -webkit-text-stroke: 1.4px var(--yellow);
 }
@@ -74,6 +77,9 @@
 }
 
 .submitBtn {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     background: var(--yellow);
     color: #111;
     border: none;
@@ -82,6 +88,21 @@
     padding: 0.9rem 1.8rem;
     font-weight: 700;
     font-size: 0.95rem;
+    transition: color 0.35s ease;
+}
+
+.submitBtn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    transform: translateY(101%);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+}
+
+.submitBtn:hover::before {
+    transform: translateY(0);
 }
 
 .submitBtn:disabled {

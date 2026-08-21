@@ -13,48 +13,48 @@ const projects = [
     {
         img: proj2,
         title: 'IRMS',
-        desc: 'Incident Report Management System for Central Luzon State University — secure campus incident reporting, tracking, and CLSU account sign-in built with HTML, CSS, JavaScript, and CodeIgniter.',
-        tags: ['HTML', 'CSS', 'JavaScript', 'CodeIgniter'],
+        desc: 'Incident Report Management System for Central Luzon State University. I built secure campus incident filing, status tracking, and CLSU account sign-in so reports can be submitted, reviewed, and resolved in one place.',
+        tags: ['HTML', 'CSS', 'JavaScript', 'CodeIgniter', 'MySQL'],
         year: '2026',
     },
     {
         img: proj6,
         title: 'ERMS',
-        desc: 'Emergency Response Management System for CLSU — one-tap SOS alerts, live device location, and emergency tracking numbers built with HTML, CSS, JavaScript, and CodeIgniter.',
-        tags: ['HTML', 'CSS', 'JavaScript', 'CodeIgniter'],
+        desc: 'Emergency Response Management System for CLSU. I developed one-tap SOS alerts, live device location, and emergency tracking numbers so campus responders can act quickly during incidents.',
+        tags: ['HTML', 'CSS', 'JavaScript', 'CodeIgniter', 'MySQL'],
         year: '2026',
     },
     {
         img: proj3,
         title: 'FeelAtHome Hotel',
-        desc: 'Hotel booking site with room listings, navigation, and a staycation-focused landing page.',
-        tags: ['HTML', 'CSS', 'JavaScript'],
+        desc: 'Hotel booking web app with room listings, reservation flow, and a staycation-focused landing page. I handled the full stack so guests can browse rooms and complete bookings through a Laravel backend and MySQL database.',
+        tags: ['HTML', 'CSS', 'JavaScript', 'Laravel', 'MySQL'],
         year: '2024',
     },
     {
         img: proj1,
         title: 'TasteOfHome',
-        desc: 'Food blog admin dashboard for managing posts, categories, and the public site.',
-        tags: ['HTML', 'CSS', 'JavaScript'],
+        desc: 'Food blog platform with a public site and an admin dashboard for managing posts, categories, and published recipes. I built the interface and Laravel/MySQL backend that stores and serves all content.',
+        tags: ['HTML', 'CSS', 'JavaScript', 'Laravel', 'MySQL'],
         year: '2024',
     },
     {
         img: proj5,
         title: 'YouTube Clone',
-        desc: 'Video platform UI with search, video cards, and a responsive content grid.',
-        tags: ['HTML', 'CSS'],
+        desc: 'Front-end video platform UI inspired by YouTube, with search, video cards, and a responsive content grid. I focused on layout, interaction, and a clean watch-page experience using HTML, CSS, and JavaScript.',
+        tags: ['HTML', 'CSS', 'JavaScript'],
         year: '2024',
     },
     {
         img: proj4,
         title: 'CLSU OVPAA Portal',
-        desc: 'Academic affairs website for Central Luzon State University with news and campus content.',
+        desc: 'Academic affairs website for Central Luzon State University’s Office of the Vice President for Academic Affairs. I created the pages for news, campus updates, and office information with a responsive HTML, CSS, and JavaScript front end.',
         tags: ['HTML', 'CSS', 'JavaScript'],
         year: '2023',
     },
 ];
 
-const filters = ['All', 'HTML', 'CSS', 'JavaScript', 'CodeIgniter'];
+const filters = ['All', 'HTML', 'CSS', 'JavaScript', 'CodeIgniter', 'Laravel', 'MySQL'];
 
 const Works = () => {
     const [filter, setFilter] = useState('All');
@@ -87,7 +87,7 @@ const Works = () => {
                 <p className="sectionEyebrow">Selected Work / 03</p>
                 <h2 className="workTitle">Projects with Presence.</h2>
                 <p className="workText">
-                    Web work that mixes function, visuals, and user experience — from campus systems built with <strong>HTML, CSS, JavaScript, and CodeIgniter</strong> to interactive front-end interfaces.
+                    Selected web work from campus systems to booking platforms and front-end clones — each card covers what I built and the stack behind it.
                 </p>
             </Reveal>
 

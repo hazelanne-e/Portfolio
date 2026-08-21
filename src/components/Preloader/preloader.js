@@ -7,7 +7,7 @@ const Preloader = ({ onDone }) => {
 
   useEffect(() => {
     const start = performance.now();
-    const duration = 1700;
+    const duration = 1600;
     let frame;
 
     const tick = (now) => {
@@ -18,8 +18,8 @@ const Preloader = ({ onDone }) => {
       } else {
         setTimeout(() => {
           setLeaving(true);
-          setTimeout(onDone, 720);
-        }, 280);
+          setTimeout(onDone, 500);
+        }, 180);
       }
     };
 
@@ -34,14 +34,14 @@ const Preloader = ({ onDone }) => {
 
   return (
     <div className={`preloader ${leaving ? 'is-leaving' : ''}`} aria-hidden="true">
-      <p className="preloaderBrand">hazelcreatives</p>
-      <h2 className="preloaderName">
-        HAZEL <span>ANNE</span>
-      </h2>
-      <div className="preloaderBar">
-        <span style={{ width: `${progress}%` }} />
+      <div className="preloaderBrand">
+        <h1 className="preloaderName">
+          <span>HAZEL ANNE</span>
+          <span>CANDELARIA</span>
+        </h1>
+        <span className="preloaderLine" />
+        <span className="preloaderCount">{String(progress).padStart(3, '0')}</span>
       </div>
-      <span className="preloaderCount">{String(progress).padStart(3, '0')}</span>
     </div>
   );
 };

@@ -76,6 +76,15 @@ const About = () => {
                     ))}
                 </div>
             </div>
+            <div className="marquee marqueeReverse" aria-hidden="true">
+                <div className="marqueeTrack">
+                    {[...marqueeItems, ...marqueeItems].map((item, index) => (
+                        <span key={`rev-${item}-${index}`}>
+                            {item} <b>✦</b>
+                        </span>
+                    ))}
+                </div>
+            </div>
 
             <Reveal className="aboutHead">
                 <p className="sectionEyebrow">About / 02</p>

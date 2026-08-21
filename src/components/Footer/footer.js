@@ -8,7 +8,7 @@ const Footer = () => {
     return (
         <footer className="footer">
             <Link to="intro" smooth={true} duration={800} offset={-90} className="footerMark">
-                HAZEL ANNE
+                HAZEL ANNE CANDELARIA
             </Link>
             <div className="footerRow">
                 <p>© {year} Hazel Anne Candelaria. All rights reserved.</p>

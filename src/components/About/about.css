@@ -8,8 +8,13 @@
     overflow: hidden;
     border-block: 1px solid var(--border);
     padding: 0.9rem 0;
-    margin-bottom: 4.5rem;
+    margin-bottom: 0;
     mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marqueeReverse {
+    border-top: none;
+    margin-bottom: 4.5rem;
 }
 
 .marquee:hover .marqueeTrack {
@@ -21,6 +26,11 @@
     width: max-content;
     gap: 1.5rem;
     animation: marquee 22s linear infinite;
+}
+
+.marqueeReverse .marqueeTrack {
+    animation-duration: 28s;
+    animation-direction: reverse;
 }
 
 .marqueeTrack span {
@@ -55,6 +65,9 @@
 }
 
 .skillTitle span {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
     color: transparent;
     -webkit-text-stroke: 1.4px var(--yellow);
 }
@@ -115,13 +128,17 @@
     border: 1px solid var(--border);
     background: var(--bg-card);
     text-align: left;
-    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease;
 }
 
 .skillIndiv:hover {
-    transform: translateY(-6px);
-    border-color: rgba(214, 255, 63, 0.35);
-    background: rgba(214, 255, 63, 0.05);
+    transform: translateY(-8px);
+    border-color: rgba(168, 85, 247, 0.45);
+    background: rgba(124, 58, 237, 0.1);
+    box-shadow: 0 22px 40px rgba(124, 58, 237, 0.16);
 }
 
 .skillImg {
